@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import { navLinks, site } from '../data/site';
 import { primaryLocation } from '../data/locations';
+import { publicAsset } from '../lib/publicAsset';
 import Marquee from './Marquee';
 
 export default function Footer() {
@@ -15,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <Link to="/" className="inline-block">
               <img
-                src="/images/logo.png"
+                src={publicAsset('/images/logo.png')}
                 alt="Sip & Crisp"
                 className="h-20 w-auto rounded-2xl bg-white object-contain p-2"
               />

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '../data/site';
+import { publicAsset } from '../lib/publicAsset';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -45,7 +46,7 @@ export default function Navbar() {
         >
           <Link to="/" className="shrink-0">
             <img
-              src="/images/logo.png"
+              src={publicAsset('/images/logo.png')}
               alt="Sip & Crisp"
               className={`w-auto object-contain transition-all duration-500 ${
                 scrolled ? 'h-8 md:h-9' : 'h-9 md:h-11'

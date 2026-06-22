@@ -7,6 +7,7 @@ import MenuCard from '../components/MenuCard';
 import ReviewsBlock from '../components/ReviewsBlock';
 import FadeIn from '../components/FadeIn';
 import Marquee from '../components/Marquee';
+import { publicAsset } from '../lib/publicAsset';
 import { site } from '../data/site';
 import { getFeaturedItems } from '../data/menu';
 import { primaryLocation } from '../data/locations';
@@ -84,7 +85,7 @@ export default function Home() {
           <FadeIn className="relative">
             <div className="float-slow relative mx-auto max-w-md lg:max-w-none">
               <img
-                src="/images/logo.png"
+                src={publicAsset('/images/logo.png')}
                 alt="Sip & Crisp"
                 className="relative z-10 mx-auto h-48 w-auto object-contain drop-shadow-2xl md:h-56"
               />

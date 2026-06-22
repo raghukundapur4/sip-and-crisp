@@ -27,7 +27,7 @@ export const locations: Location[] = [
     name: 'Sip & Crisp — BTM Layout',
     address,
     landmark: '16th Main Rd, Kuvempu Nagar',
-    phone: '8971267102',
+    phone: '8549835696',
     hours: [{ day: 'Mon – Sun', open: '11:00 AM', close: '12:00 AM' }],
     mapEmbedUrl: `https://maps.google.com/maps?q=${mapQuery}&hl=en&z=16&output=embed`,
     mapLink: `https://maps.google.com/?q=${mapQuery}`,

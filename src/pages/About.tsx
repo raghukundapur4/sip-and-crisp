@@ -4,6 +4,7 @@ import SectionShell from '../components/SectionShell';
 import SectionHeading from '../components/SectionHeading';
 import FadeIn from '../components/FadeIn';
 import { site } from '../data/site';
+import { publicAsset } from '../lib/publicAsset';
 
 const values = [
   {
@@ -93,7 +94,7 @@ export default function About() {
         <div className="grid items-center gap-12 lg:grid-cols-5">
           <FadeIn className="lg:col-span-2">
             <img
-              src="/images/founder.jpg"
+              src={publicAsset('/images/founder.jpg')}
               alt={site.ownerName}
               className="mx-auto aspect-[3/4] w-full max-w-sm rounded-3xl object-cover object-top shadow-xl"
             />

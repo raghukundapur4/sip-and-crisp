@@ -13,7 +13,7 @@ export const site = {
   phoneDisplay: '+91 89712 67102',
   whatsapp: '918971267102',
   email: 'hello@sipandcrisp.in',
-  siteUrl: 'https://YOUR_USERNAME.github.io',
+  siteUrl: 'https://raghukundapur4.github.io/sip-and-crisp',
   googleReviewUrl: 'https://g.page/r/PLACEHOLDER/review',
   formspreeId: import.meta.env.VITE_FORMSPREE_ID as string | undefined,
 } as const;

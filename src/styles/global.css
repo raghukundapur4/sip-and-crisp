@@ -1,0 +1,175 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-orange-light: #ffb347;
+  --color-orange: #f58220;
+  --color-orange-dark: #e85d04;
+  --color-green-light: #8bc34a;
+  --color-green: #2e7d32;
+  --color-green-dark: #1a3026;
+  --color-cream: #faf8f4;
+  --color-paper: #fffefb;
+  --color-muted: #5c6b63;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Sora', system-ui, sans-serif;
+
+  --radius-blob: 60% 40% 55% 45% / 45% 55% 45% 55%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream font-sans text-green-dark antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    @apply bg-orange/25 text-green-dark;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gradient-sip {
+    background: linear-gradient(120deg, var(--color-orange-light) 0%, var(--color-orange-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-crisp {
+    background: linear-gradient(120deg, var(--color-green-light) 0%, var(--color-green) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .mesh-hero {
+    background-color: var(--color-cream);
+    background-image:
+      radial-gradient(at 15% 20%, rgba(255, 179, 71, 0.18) 0, transparent 45%),
+      radial-gradient(at 85% 15%, rgba(139, 195, 74, 0.14) 0, transparent 40%),
+      radial-gradient(at 70% 80%, rgba(245, 130, 32, 0.1) 0, transparent 35%),
+      radial-gradient(at 10% 85%, rgba(46, 125, 50, 0.08) 0, transparent 30%);
+  }
+
+  .glass-card {
+    @apply border border-white/60 bg-white/70 shadow-[0_8px_32px_rgba(26,48,38,0.06)] backdrop-blur-md;
+  }
+
+  .glass-card-dark {
+    @apply border border-white/10 bg-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-md;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition-all duration-300;
+    background: linear-gradient(135deg, #ffb347 0%, #e85d04 100%);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(232, 93, 4, 0.35);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-green-dark/15 bg-paper px-8 py-3.5 text-sm font-semibold tracking-wide text-green-dark transition-all duration-300 hover:border-green hover:bg-green/5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-orange transition-colors hover:text-orange-dark;
+  }
+
+  .tagline {
+    @apply text-[0.65rem] font-medium uppercase tracking-[0.35em] text-green-dark/50 md:text-xs;
+  }
+
+  .section-number {
+    @apply font-display text-[5rem] font-light leading-none text-green-dark/[0.04] md:text-[8rem];
+  }
+
+  .blob {
+    border-radius: var(--radius-blob);
+  }
+
+  .card-tilt {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .card-tilt:hover {
+    transform: rotate(-1deg) translateY(-4px);
+  }
+
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track,
+    .float-slow {
+      animation: none;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

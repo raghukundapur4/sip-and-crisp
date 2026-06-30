@@ -1,36 +1,20 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Droplets, ShieldCheck, Zap, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Clock3, MapPin, ShieldCheck, Sparkles, Star, Zap } from 'lucide-react';
 import SEO from '../components/SEO';
 import SectionHeading from '../components/SectionHeading';
 import SectionShell from '../components/SectionShell';
 import MenuCard from '../components/MenuCard';
 import ReviewsBlock from '../components/ReviewsBlock';
 import FadeIn from '../components/FadeIn';
-import Marquee from '../components/Marquee';
 import { publicAsset } from '../lib/publicAsset';
 import { site } from '../data/site';
 import { getFeaturedItems } from '../data/menu';
 import { primaryLocation } from '../data/locations';
 
-const whyUs = [
-  {
-    icon: Droplets,
-    title: 'Always Fresh',
-    text: 'Juices pressed to order. Shakes blended fresh. Nothing waits on a shelf.',
-    accent: 'from-orange-light/20 to-orange/5',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Spotless',
-    text: 'Gloves on, counters clean, ingredients sealed — hygiene you can see.',
-    accent: 'from-green-light/20 to-green/5',
-  },
-  {
-    icon: Zap,
-    title: 'Fast',
-    text: 'Your sip and bite ready in minutes. Quality without the wait.',
-    accent: 'from-orange-light/15 to-green-light/10',
-  },
+const highlights = [
+  { icon: Sparkles, title: 'Freshly made', text: 'Pressed, blended and prepared after you order.' },
+  { icon: ShieldCheck, title: 'Clean kitchen', text: 'Quality ingredients and careful preparation.' },
+  { icon: Zap, title: 'Quick service', text: 'Great food and drinks without the long wait.' },
 ];
 
 export default function Home() {
@@ -46,163 +30,101 @@ export default function Home() {
         path="/"
       />
 
-      {/* Hero — asymmetric split */}
-      <section className="mesh-hero relative min-h-[90vh] overflow-hidden px-6 pb-20 pt-32 md:pt-36">
-        <div
-          className="blob pointer-events-none absolute -right-32 top-20 h-96 w-96 bg-orange/10"
-          aria-hidden="true"
-        />
-        <div
-          className="blob pointer-events-none absolute -left-20 bottom-20 h-72 w-72 bg-green-light/10"
-          aria-hidden="true"
-        />
+      <section className="relative isolate overflow-hidden bg-[#fffaf3] px-6 pb-16 pt-28 md:pb-24 md:pt-36">
+        <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_85%_20%,rgba(255,173,72,.32),transparent_32%),radial-gradient(circle_at_8%_30%,rgba(78,138,83,.18),transparent_28%)]" />
+        <div className="absolute -right-20 top-32 -z-10 h-72 w-72 rounded-full border border-orange/20 bg-orange/10 blur-3xl" />
+        <div className="absolute -left-24 bottom-0 -z-10 h-64 w-64 rounded-full bg-green-light/20 blur-3xl" />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <FadeIn>
-              <p className="tagline">{site.city}</p>
-              <h1 className="mt-6 font-display text-5xl font-medium leading-[0.95] md:text-7xl lg:text-8xl">
-                <span className="text-gradient-sip">Sip</span>
-                <span className="text-green-dark"> & </span>
-                <span className="text-gradient-crisp">Crisp</span>
-              </h1>
-              <p className="tagline mt-8">{site.tagline}</p>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-muted md:text-lg">
-                {site.heroDescription}
-              </p>
-            </FadeIn>
-            <FadeIn className="mt-10 flex flex-wrap gap-4">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-green-dark shadow-sm">
+              <MapPin className="h-3.5 w-3.5 text-orange" /> {site.city}
+            </div>
+            <h1 className="mt-7 max-w-2xl font-display text-5xl font-medium leading-[.94] text-green-dark md:text-7xl lg:text-8xl">
+              Your everyday stop for <span className="text-orange">fresh</span> sips and satisfying bites.
+            </h1>
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">{site.heroDescription}</p>
+            <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/menu" className="btn-primary">
-                Explore Menu
-                <ArrowRight className="h-4 w-4" />
+                View our menu <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/locations" className="btn-secondary">
-                Find Us
-              </Link>
-            </FadeIn>
-          </div>
+              <Link to="/locations" className="btn-secondary">Visit Sip & Crisp</Link>
+            </div>
+            <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 text-sm text-muted">
+              <div className="flex items-center gap-2"><Star className="h-4 w-4 fill-orange text-orange" /> Loved by Bangalore foodies</div>
+              <div className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-green" /> Quick pickup friendly</div>
+            </div>
+          </FadeIn>
 
-          <FadeIn className="relative">
-            <div className="float-slow relative mx-auto max-w-md lg:max-w-none">
-              <img
-                src={publicAsset('/images/logo.png')}
-                alt="Sip & Crisp"
-                className="relative z-10 mx-auto h-48 w-auto object-contain drop-shadow-2xl md:h-56"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80"
-                alt=""
-                className="absolute -left-4 top-8 h-28 w-28 -rotate-12 rounded-3xl object-cover shadow-xl md:-left-12 md:h-36 md:w-36"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80"
-                alt=""
-                className="absolute -right-2 bottom-4 h-24 w-24 rotate-6 rounded-3xl object-cover shadow-xl md:-right-8 md:h-32 md:w-32"
-              />
-              <div
-                className="blob absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-orange/15 to-green-light/15"
-                aria-hidden="true"
-              />
+          <FadeIn className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-white p-3 shadow-[0_28px_70px_rgba(42,69,47,.18)]">
+              <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1200&q=90" alt="Colourful fresh drinks from Sip & Crisp" className="h-[29rem] w-full rounded-[2rem] object-cover md:h-[34rem]" />
+              <div className="absolute bottom-8 left-8 right-8 rounded-3xl border border-white/50 bg-white/90 p-5 backdrop-blur md:right-auto md:w-72">
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-orange">Made to order</p>
+                <p className="mt-2 font-display text-2xl leading-tight text-green-dark">Fresh flavours for every mood.</p>
+              </div>
+            </div>
+            <div className="absolute -bottom-7 -left-7 hidden rounded-3xl bg-green-dark px-6 py-5 text-white shadow-xl md:block">
+              <p className="text-3xl font-display">Sip. Bite. Repeat.</p>
+              <p className="mt-1 text-sm text-white/65">Juices · shakes · pizzas · sandwiches</p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <Marquee />
+      <section className="border-y border-green-dark/10 bg-white px-6 py-5">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3 text-center text-xs font-semibold uppercase tracking-[.16em] text-green-dark/70 md:justify-between">
+          <span>Fresh Juices</span><span>Milkshakes</span><span>Chocolates</span><span>Pizzas</span><span>Sandwiches</span>
+        </div>
+      </section>
 
-      {/* Why Us — bento */}
       <SectionShell number="01">
-        <SectionHeading
-          eyebrow="The Experience"
-          title="More than a juice shop"
-          subtitle="We built Sip & Crisp for people who want fresh drinks, quick bites, and a space that feels considered."
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {whyUs.map(({ icon: Icon, title, text, accent }, i) => (
-            <article
-              key={title}
-              className={`glass-card rounded-3xl p-8 ${i === 1 ? 'md:-translate-y-4' : ''}`}
-            >
-              <div
-                className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${accent}`}
-              >
-                <Icon className="h-6 w-6 text-green-dark" />
-              </div>
-              <h3 className="font-display text-xl text-green-dark">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{text}</p>
-            </article>
-          ))}
+        <div className="grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
+          <SectionHeading eyebrow="Why people return" title="Simple food, done with care." subtitle="A relaxed, welcoming stop for a quick drink, a comfort-food break, or an easy catch-up." />
+          <div className="grid gap-4 sm:grid-cols-3">
+            {highlights.map(({ icon: Icon, title, text }, index) => (
+              <FadeIn key={title} className={index === 1 ? 'sm:-translate-y-5' : ''}>
+                <article className="h-full rounded-3xl border border-green-dark/10 bg-[#fffaf3] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange/15"><Icon className="h-5 w-5 text-orange" /></div>
+                  <h3 className="mt-5 font-display text-xl text-green-dark">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </SectionShell>
 
-      {/* Menu bento */}
       <SectionShell number="02" alt>
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            eyebrow="The Menu"
-            title="Favourites worth ordering"
-            subtitle={site.menuOfferings}
-          />
-          <Link to="/menu" className="btn-ghost mb-14 shrink-0 self-start md:self-auto">
-            Full menu <ArrowUpRight className="h-4 w-4" />
-          </Link>
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <SectionHeading eyebrow="Crowd favourites" title="Pick your next favourite." subtitle={site.menuOfferings} />
+          <Link to="/menu" className="btn-ghost mb-14 shrink-0 self-start md:self-auto">Explore full menu <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
-
         <div className="grid gap-4 md:grid-cols-4 md:grid-rows-2">
-          {heroItem && (
-            <div className="md:col-span-2 md:row-span-2">
-              <MenuCard item={heroItem} category={heroItem.category} featured />
-            </div>
-          )}
-          {gridItems.map((item) => (
-            <MenuCard key={item.name} item={item} category={item.category} compact />
-          ))}
+          {heroItem && <div className="md:col-span-2 md:row-span-2"><MenuCard item={heroItem} category={heroItem.category} featured /></div>}
+          {gridItems.map((item) => <MenuCard key={item.name} item={item} category={item.category} compact />)}
         </div>
       </SectionShell>
 
-      {/* Reviews — featured + scroll */}
       <SectionShell number="03">
-        <SectionHeading eyebrow="Voices" title="What Bangalore is saying" />
+        <SectionHeading eyebrow="Real reviews" title="A local favourite in the making." subtitle="Drop in for your usual or discover something new." />
         <ReviewsBlock variant="preview" />
       </SectionShell>
 
-      {/* Location — immersive */}
       <section className="relative overflow-hidden bg-green-dark px-6 py-24 text-white md:py-32">
-        <div
-          className="blob pointer-events-none absolute -left-40 top-0 h-80 w-80 bg-orange/10"
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <FadeIn>
-              <p className="tagline !text-orange-light/70">Visit Us</p>
-              <h2 className="mt-4 font-display text-4xl font-medium md:text-5xl">
-                {primaryLocation.name}
-              </h2>
-              <p className="mt-6 flex items-start gap-3 text-white/60">
-                <MapPin className="mt-1 h-4 w-4 shrink-0 text-orange-light" />
-                <span>
-                  {primaryLocation.address}
-                  <br />
-                  <span className="text-white/40">{primaryLocation.landmark}</span>
-                </span>
-              </p>
-              <Link to="/locations" className="btn-primary mt-10">
-                Get directions <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </FadeIn>
-            <FadeIn>
-              <div className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
-                <iframe
-                  title="Sip & Crisp location map"
-                  src={primaryLocation.mapEmbedUrl}
-                  className="h-72 w-full border-0 grayscale-[30%] contrast-[1.1] md:h-96"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </FadeIn>
-          </div>
+        <div className="absolute inset-0 opacity-25" style={{ backgroundImage: `url(${publicAsset('/images/logo.png')})`, backgroundPosition: '110% 120%', backgroundRepeat: 'no-repeat', backgroundSize: '22rem' }} />
+        <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <FadeIn>
+            <p className="text-xs font-semibold uppercase tracking-[.18em] text-orange-light">Find us today</p>
+            <h2 className="mt-5 font-display text-4xl md:text-6xl">Close by. Worth the stop.</h2>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-white/70">{primaryLocation.address}<br /><span className="text-white/45">{primaryLocation.landmark}</span></p>
+            <Link to="/locations" className="btn-primary mt-9">Get directions <ArrowUpRight className="h-4 w-4" /></Link>
+          </FadeIn>
+          <FadeIn>
+            <div className="overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 p-2 shadow-2xl">
+              <iframe title="Sip & Crisp location map" src={primaryLocation.mapEmbedUrl} className="h-72 w-full rounded-[1.55rem] border-0 grayscale-[25%] md:h-96" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>
